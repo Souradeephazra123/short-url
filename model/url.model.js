@@ -1,4 +1,4 @@
-import {Url} from "./url.schema.js";
+import { Url } from "./url.schema.js";
 
 async function isShortUrlExist(shorturl) {
   try {
@@ -10,6 +10,17 @@ async function isShortUrlExist(shorturl) {
   } catch (error) {
     console.error("Finding short url in DB showing error", error);
     return false;
+  }
+}
+
+async function getUrlLongname(shorturl) {
+  try {
+    const longUrl = await Url.findOne({ shortUrl: shorturl });
+    if (longUrl) {
+      return longUrl.longUrl;
+    }
+  } catch (error) {
+    console.error("Finding long url in DB showing error", error);
   }
 }
 
@@ -40,4 +51,4 @@ async function saveUrl(longUrl, shortUrl, customAlias, topic) {
   }
 }
 
-export { isShortUrlExist, aliasExistance,saveUrl };
+export { isShortUrlExist, aliasExistance, saveUrl,getUrlLongname };
