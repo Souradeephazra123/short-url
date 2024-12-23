@@ -10,7 +10,12 @@ const analyticsSchema = new mongoose.Schema({
     default: Date.now,
   },
   userAgent: {
-    type: String,
+    browser: { type: String },
+    version: { type: String },
+    os: { type: String },
+    platform: { type: String },
+    source: { type: String },
+    device: { type: String },
   },
   ipAddress: { type: String },
   geolocation: {
@@ -19,6 +24,9 @@ const analyticsSchema = new mongoose.Schema({
     city: { type: String },
     lat: { type: Number },
     lon: { type: Number },
+  },
+  purpose: {
+    type: String,
   },
 });
 
