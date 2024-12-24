@@ -28,6 +28,9 @@ const analyticsSchema = new mongoose.Schema({
   purpose: {
     type: String,
   },
+  userId: {
+    type: String,
+  },
 });
 
 export const Analytics = mongoose.model("analytics", analyticsSchema);
